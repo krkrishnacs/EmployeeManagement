@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\ControllerBase\" />
   </ItemGroup>
   <ItemGroup>
@@ -2082,7 +2083,6 @@
     <Content Include="Content\SCSS\_top_navigation.scss" />
     <Content Include="Content\SCSS\_typography.scss" />
     <Content Include="Content\SCSS\_variables.scss" />
-    <None Include="Properties\PublishProfiles\Inspinia.pubxml" />
     <Content Include="Images\a1.jpg" />
     <Content Include="Images\a2.jpg" />
     <Content Include="Images\a3.jpg" />
