@@ -1,0 +1,111 @@
+﻿
+.table-bordered {
+    border: 1px solid #EBEBEB;
+}
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+table {
+    background-color: transparent;
+}
+/*old*/
+.thfontsize {
+    border: 2px solid black;
+    font-size: 13px;
+}
+.tdfontsize {
+    border: 2px solid black;
+    font-size: 11px;
+}
+.trfontsize {
+    border: 2px solid black;
+}
+.tablepading {
+    border: 2px solid black;
+    padding-top: 10px;
+}
+body {
+    margin: 0px 30px 0px 30px;
+}
+
+h2 {
+    margin: 7px 0px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text {
+    align-items: center;
+    text-align: center;
+}
+
+table {
+    border: 2px solid black;
+    width: 100%;
+}
+
+.first-t {
+    text-align: center;
+}
+.hmargin {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.t-head {
+    position: relative;
+    left: 30px;
+    top: 11px;
+    background-color: white;
+    margin-left: 30px;
+    border: 2px solid black;
+    width: 40%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.t_head {
+    position: relative;
+    left: 30px;
+    top: 15px;
+    background-color: white;
+    padding: 2px 20px 2px 20px;
+    margin-left: 30px;
+    border: 2px solid black;
+    width: 37%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+td {
+    padding: 2px;
+    font-size:10px;
+}
+
+th {
+    font-size: 13px;
+    padding: 5px 0px 5px 0px;
+}
+
+.logo img {
+    width: 70px;
+    margin-top: 5px;
+}
+
+.image img {
+    margin-top: 5px;
+    width: 70px;
+    border: 1px solid black;
+    padding: 2px;
+}

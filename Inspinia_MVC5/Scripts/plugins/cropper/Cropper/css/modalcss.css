@@ -1,0 +1,88 @@
+﻿.mb_elegantModal {
+  position: fixed;
+  /*font-family: Arial,Helvetica,sans-serif;*/
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 99999;
+  opacity: 1;
+  display: none;
+}
+
+.mb_elegantModal>div {
+  width: 500px;
+  position: relative;
+  margin: 10% auto;
+  border-radius: 10px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 8px 0px 20px 14px rgba(0, 0, 0, 0.08);
+}
+@media (max-width: 767px){
+    .mb_elegantModal>div {
+  width: 100%;
+  padding: 28px 0;
+}
+}
+.mb_elegantModalclose {
+  position: absolute;
+  right: 12px;
+  top: 16px;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  color:white;
+}
+.mb_elegantModalclose {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAQlBMVEVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVbLMYuAAAAFXRSTlMADxAaHB4fICEjpaarvL3AwcLDxMX0gi/eAAAAb0lEQVR4XmVPWxLEIAiLffgqalvL/a+6grs7nSE/JDAEAixHi1DEdiyAy8zNi/aNOTsQD/QIxC6McLPg3rYvgS9KnkdL8UA4+Y8zYCBdP30lKNY+dV9hG3bFmob6PluDfYy0yOvaoRlux8Cu4Uz8DwXDDTUGwWrUAAAAAElFTkSuQmCC') /*../images/close.png*/;
+}
+.mb_elegantModal a {
+  font-size: 9px;
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+.zoomOutDown {
+    -webkit-animation-name: zoomOutDown;
+    -moz-animation-name: zoomOutDown;
+    -o-animation-name: zoomOutDown;
+    animation-name: zoomOutDown;
+}
+
+.swing {
+    -webkit-transform-origin: top center;
+    -ms-transform-origin: top center;
+    -moz-transform-origin: top center;
+    -o-transform-origin: top center;
+    transform-origin: top center;
+    -webkit-animation-name: swing;
+    -moz-animation-name: swing;
+    -o-animation-name: swing;
+    animation-name: swing;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+.xslim {
+    font-weight: 100;
+}
+.slim {
+    font-weight: 300;
+}
+.normal {
+    font-weight: 400;
+}
+.bold {
+    font-weight: 700;
+}

@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="~/Scripts/app/Account.js"></script>
+<script src="~/Scripts/plugins/Alertify/alertify.js"></script>
+<form method="Post">
+    <div class="wrapper wrapper-content app-page-start">
+        <div class="row">
+            <div class="col-md-12 box-filter">
+                <input type="hidden" name="hdnID" value="" id="hdnID" />
+                <div class="panel panel-primary no-radius">
+                    <div class="panel-body">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <label class="required">First Name:</label>
+                                <input type="text" class="form-control input-sm t-firstname" name="FirstName" id="firstname" placeholder="Enter First Name" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="required">Last Name:</label>
+                                <input type="text" class="form-control input-sm t-lastname" name="LastName" id="lastname" placeholder="Enter Last Name" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="required">EmailAddress:</label>
+                                <input type="text" class="form-control input-sm t-emailaddress" name="EmailAddress" id="emailaddress" placeholder="Enter Email Address" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="required">Password:</label>
+                                <input type="password" class="form-control input-sm t-password" name="Password" id="password" placeholder="Enter Password" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="required">ConfirmPassword:</label>
+                                <input type="password" class="form-control input-sm t-confirmpassword" name="ConfirmPassword" id="confirmpassword" placeholder="Enter ConfirmPassword" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="required">Mobile Number:</label>
+                                <input type="text" class="form-control input-sm t-mobile" name="MobileNumber" id="mobile" placeholder="Enter Mobile Number" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label class="required">Address:</label>
+                                <input type="text" class="form-control input-sm t-address" name="Address" id="address" placeholder="Enter Your Address" required />
+                            </div>
+                            <div class="col-md-3" style="margin-top: 36px;">
+                                <label class="required" id="isactive" name="IsActive">IsActive :</label>
+                                <input type="checkbox" id="isactive" name="IsActive" />
+                            </div>
+                            <div class="col-md-12 text-center" style="padding-top: 25px;">
+                                <button type="button" style="height: 31px;width: 79px;" id="btnSaveReg" class="btn btn-primary">Register</button>
+                                <div class="signup-link">
+                                    Not a member? <a href="/Account/Login">Signup now</a>
+                                </div>
+                            </div>
+
+                            @*End Palne body*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
