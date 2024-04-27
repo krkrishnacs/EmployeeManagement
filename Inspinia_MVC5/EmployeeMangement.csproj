@@ -123,8 +123,10 @@
     <Compile Include="AppCodes\DalBase.cs" />
     <Compile Include="AppCodes\Dal\AccountDal.cs" />
     <Compile Include="AppCodes\Dal\AccountRepo.cs" />
+    <Compile Include="AppCodes\Dal\EmployeeDetailsDal.cs" />
     <Compile Include="AppCodes\DbHandler.cs" />
     <Compile Include="AppCodes\Services\AccountDataService.cs" />
+    <Compile Include="AppCodes\Services\EmployeeDetailsService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -161,7 +163,7 @@
     <Compile Include="Models\AccountData.cs" />
     <Compile Include="Models\Attendence.cs" />
     <Compile Include="Models\ClientJsonResult.cs" />
-    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeDetails.cs" />
     <Compile Include="Models\ScaffoldingContext.cs" />
     <Compile Include="Models\ScaffoldingController.cs" />
     <Compile Include="Models\UserLogin.cs" />
@@ -2936,6 +2938,7 @@
     <Content Include="Images\p_big3.jpg" />
     <Content Include="Images\zender_logo.png" />
     <Content Include="Scripts\app\Account.js" />
+    <Content Include="Scripts\app\EmployeeDetails.js" />
     <Content Include="Scripts\app\inspinia.js" />
     <Content Include="Scripts\app\Login.js" />
     <Content Include="Scripts\app\skin.config.min.js" />
@@ -2944,6 +2947,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\Jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\oth.plugin\alasql.js" />
     <Content Include="Scripts\oth.plugin\alertify.js" />

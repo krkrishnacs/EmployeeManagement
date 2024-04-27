@@ -3,13 +3,18 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_2.cshtml";
 }
+@*<script src="~/Scripts/Jquery-3.7.1.min.js"></script>*@
+<link href="~/Content/Select2/select2.min.css" rel="stylesheet" />
+    <script src="~/Content/Select2/select2.min.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/app/EmployeeDetails.js"></script>
 <div class="wrapper wrapper-content app-page-start">
     <div class="row">
         <div class="col-md-12 box-filter">
             <input type="hidden" name="DegreeCourseID" value="" id="hdnDegreeCourseID" />
             <div class="panel panel-primary no-radius">
                 <div class="panel-heading no-radius">
-                    Degree Course
+                    Employee Details
                 </div>
                 <div class="panel-body ">
                     <div class="row">
@@ -59,6 +64,22 @@
                             <button type="button" style="height: 31px;width: 79px;" id="btnRefresh" class="btn btn-danger">Refresh</button>
                         </div>
                     </div>
+                    @*<div class="panel panel-primary no-radius">
+                            <div class="panel-heading no-radius">
+                                Employee Details List:-
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <div class="table-resposive mt-15">
+                                                <table class="table table-bordered table-condensed table-hover table-tbldata   tbldata" style="overflow-x: scroll; display:normal; width: 100%;" cellspacing="0" id="tblDegreeCourse"></table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
 
                     @*End Palne body*@
                 </div>
@@ -66,21 +87,6 @@
             </div>
         </div>
     </div>
-    <div class="panel panel-primary no-radius">
-        <div class="panel-heading no-radius">
-            Degree Couse List:-
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div id="collapseOne" class="panel-collapse collapse in">
-                    <div class="panel-body">
-                        <div class="table-resposive mt-15">
-                            <table class="table table-bordered table-condensed table-hover table-tbldata   tbldata" style="overflow-x: scroll; display:normal; width: 100%;" cellspacing="0" id="tblDegreeCourse"></table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
 
