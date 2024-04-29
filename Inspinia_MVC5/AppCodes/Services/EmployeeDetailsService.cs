@@ -29,11 +29,19 @@ namespace Inspinia_MVC5.AppCodes.Services
             {
                 return resource.Get_Department();
             }
-        }public List<Designation> Get_Designation()
+        }
+        public List<Designation> Get_Designation()
         {
             using (EmployeeDetailsDal resource = new EmployeeDetailsDal(null))
             {
                 return resource.Get_Designation();
+            }
+        }
+        public List<EmployeeDetails> Get_AllEmployeeDetails(EmployeeDetails employeeDetails)
+        {
+            using (EmployeeDetailsDal resource = new EmployeeDetailsDal(null))
+            {
+                return resource.Get_AllEmployeeDetails();
             }
         }
     }

@@ -36,5 +36,11 @@ namespace Inspinia_MVC5.AppCodes.Dal
             var cmd = NewCommand("dbo.Get_Designation");
             return GetResult(cmd).Convert<Designation>();
         }
+        public List<EmployeeDetails> Get_AllEmployeeDetails()
+        {
+            var cmd = NewCommand("dbo.Get_AllEmployeeDetails");
+            var dt = GetResult(cmd);
+            return dt.Convert<EmployeeDetails>();
+        }
     }
 }

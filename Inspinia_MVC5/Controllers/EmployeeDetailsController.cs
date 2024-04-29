@@ -16,7 +16,6 @@ namespace Inspinia_MVC5.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public ActionResult Add_UpdateEmployeeDetails(EmployeeDetails employeeDetails)
         {
@@ -27,8 +26,6 @@ namespace Inspinia_MVC5.Controllers
             _cr.Status = HttpStatusCode.OK;
             _cr.Message = "Success";
             return Json(_cr);
-
-
         }
         [HttpPost]
         public ActionResult Get_Department()
@@ -45,6 +42,16 @@ namespace Inspinia_MVC5.Controllers
         {
             var employeeDetailsService = new EmployeeDetailsService(null);
             var res = employeeDetailsService.Get_Designation();
+            _cr.Data = res;
+            _cr.Status = HttpStatusCode.OK;
+            _cr.Message = "Success";
+            return Json(_cr);
+        }
+        [HttpPost]
+        public ActionResult Get_AllEmployeeDetails(EmployeeDetails employeeDetails)
+        {
+            var employeeDetailsService = new EmployeeDetailsService(null);
+            var res = employeeDetailsService.Get_AllEmployeeDetails(employeeDetails);
             _cr.Data = res;
             _cr.Status = HttpStatusCode.OK;
             _cr.Message = "Success";

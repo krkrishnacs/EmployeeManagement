@@ -9,18 +9,19 @@
             mobileno: $("#mobileno"),
             empaddress: $("#empaddress"),
             isactive: $("#isactive"),
-            hdnCollegeID: $("#hdnCollegeID"),
+            hdnID: $("#hdnID"),
+            tblEmployeeDetails: $("#tblEmployeeDetails"),
         };
     };
     var objServer = {
-        Add_Update_CollegeStudent: function (data, callback) {
+        Add_UpdateEmployeeDetails: function (data, callback) {
             $.ajax({
                 type: 'post',
                 contentType: 'application/json;charset=utf-8;',
                 data: JSON.stringify(data),
                 dataType: 'json',
                 async: false,
-                url: '/CollegeStudent/Add_Update_CollegeStudent',
+                url: '/EmployeeDetails/Add_UpdateEmployeeDetails',
                 success: function (responce) {
                     $(".loading-overlay").hide();
                     callback(responce);
@@ -67,14 +68,14 @@
                 }
             });
         },
-        Get_AllCollegeStudent: function (data, callback) {
+        Get_AllEmployeeDetails: function (data, callback) {
             $.ajax({
                 type: 'post',
                 contentType: 'application/json;charset=utf-8;',
                 data: JSON.stringify(data),
                 dataType: 'json',
                 async: false,
-                url: '/CollegeStudent/Get_AllCollegeStudent',
+                url: '/EmployeeDetails/Get_AllEmployeeDetails',
                 success: function (responce) {
 
                     $(".loading-overlay").hide();
@@ -119,17 +120,13 @@
             OnLoad: function () {
                 objClient.CommonMethods.Get_Department();
                 objClient.CommonMethods.Get_Designation();
+                objClient.CommonMethods.Get_AllEmployeeDetails();
+                $("#empdate").datepicker();
                 $('#ddldepartment').select2();
-               /* alertify.success("Please Select")*/
-               /* $("#empdate").datepicker();*/
-                alert("message");
-               /* $("#empdate").datepicker();*/
             },
             Click: function () {
                 $(document).on('click', '#btnSave', function () {
-                    alert("Testing Click Events");
-                    /*objClient.CommonMethods.Add_Update_CollegeStudent();*/
-
+                    objClient.CommonMethods.Add_UpdateEmployeeDetails();
                 });
                 $(document).on('click', '#btnRefresh', function () {
                     location.reload();
@@ -225,26 +222,24 @@
                     }
                 });
             },
-            Add_Update_CollegeStudent: function () {
+            Add_UpdateEmployeeDetails: function () {
                 if (objClient.CommonMethods.Validate_Flied() == true) {
                     var reqObj = {
-                        //CollegeID: Control().hdnCollegeID.val(),
-                        CollegeID: Control().hdnCollegeID.val() == "" ? 0 : Control().hdnCollegeID.val(),
-                        CollegeCode: Control().collegecode.val(),
-                        CollegeName: Control().collegename.val(),
-                        CollegeAddress: Control().collegeaddress.val(),
-                        Mobile: Control().mobileno.val(),
-                        Email: Control().email.val(),
-                        Website: Control().website.val(),
-                        ContactPerson: Control().contactperson.val(),
-                        ExamCenterName: Control().examcname.val(),
+                        Id: Control().hdnID.val() == "" ? 0 : Control().hdnID.val(),
+                        EmployeeName: Control().empName.val(),
+                        DateofBirth: Control().empdate.val(),
+                        Gender: Control().ddlgender.val(),
+                        MobileNumber: Control().mobileno.val(),
+                        EmployeeAddress: Control().empaddress.val(),
+                        DepartmentName: Control().ddldepartment.val(),
+                        DesignationName: Control().ddldesignation.val(),
                         IsActive: Control().isactive.is(":checked"),
                     };
                 }
                 else {
                     return false;
                 }
-                objServer.Add_Update_CollegeStudent(reqObj, function (response) {
+                objServer.Add_UpdateEmployeeDetails(reqObj, function (response) {
                     if (response.Status == 200) {
                         if (response.Data.code == 1) {
                             alertify.success(response.Data.Msg);
@@ -262,25 +257,24 @@
                     }
                 });
             },
-            Get_AllCollegeStudent: function () {
-
-                objServer.Get_AllCollegeStudent(null, function (response) {
+            Get_AllEmployeeDetails: function () {
+                objServer.Get_AllEmployeeDetails(null, function (response) {
                     if (response.Status == 200) {
                         var data = response.Data;
-                        $('#tblcollegestu').DataTable({
+                        $('#tblEmployeeDetails').DataTable({
                             dom: 'Bfrtip',
                             destroy: true,
                             data: data,
                             responsive: false,
                             columns: [
-                                { title: "<span>CollegeID</span>", data: 'CollegeID' },
-                                { title: "<span>College Name</span>", data: 'CollegeName' },
-                                { title: "<span>College Address </span>", data: 'CollegeAddress' },
-                                { title: "<span>College Code</span>", data: 'CollegeCode' },
-                                { title: "<span>Exam Center Name</span>", data: 'ExamCenterName' },
-                                { title: "<span>Email Address </span>", data: 'Email' },
-                                { title: "<span>Mobile No</span>", data: 'Mobile' },
-                                { title: "<span>Contact Person</span>", data: 'ContactPerson' },
+                                { title: "<span>ID</span>", data: 'Id' },
+                                { title: "<span>Employee Name</span>", data: 'EmployeeName' },
+                                { title: "<span>Date of Birth </span>", data: 'DateofBirth' },
+                                { title: "<span>Gender</span>", data: 'Gender' },
+                                { title: "<span>Mobile Number</span>", data: 'MobileNumber' },
+                                { title: "<span>Employee Address</span>", data: 'EmployeeAddress' },
+                                { title: "<span>Department Name</span>", data: 'DepartmentName' },
+                                { title: "<span>Designation Name</span>", data: 'DesignationName' },
                                 { title: "<span> IsActive </span>", data: 'IsActive' },
                                 { title: "<span>Action</span>", data: '' },
                             ],
@@ -401,17 +395,26 @@
             },
             Validate_Flied: function () {
 
-                if (Control().collegecode.val() == '') {
-                    alertify.error('Please Enter College Code'); return false;
+                if (Control().empName.val() == '') {
+                    alertify.error('Please Enter Employee Name'); return false;
                 }
-                if (Control().collegename.val() == '') {
-                    alertify.error('Please Enter College  Name:'); return false;
+                if (Control().empdate.val() == '') {
+                    alertify.error('Please Select Employee Date of Birth:'); return false;
                 }
-                if (Control().collegeaddress.val() == '') {
-                    alertify.error('Please Enter College Address'); return false;
+                if (Control().ddlgender.val() == '') {
+                    alertify.error('Please Select Gender'); return false;
                 }
                 if (Control().mobileno.val() == '') {
                     alertify.error('Please Enter Mobile No'); return false;
+                }
+                if (Control().ddldepartment.val() == '') {
+                    alertify.error('Please Select Department'); return false;
+                }
+                if (Control().ddldesignation.val() == '') {
+                    alertify.error('Please Select Designation'); return false;
+                }
+                if (Control().empaddress.val() == '') {
+                    alertify.error('Please Enter Employee Address'); return false;
                 }
 
                 $("#mobileno").focusout(function () {
@@ -424,8 +427,6 @@
                         alertify.error("Invalid Phone Number");
                     }
                 });
-
-
                 $("#email").focusout(function () {
                     var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
                     if (!regex.test($(this).val())) {

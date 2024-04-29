@@ -1613,6 +1613,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\email.css" />
+    <Content Include="Content\jqGrid\ui.jqgrid.css" />
     <Content Include="Content\js\alasql.min.js" />
     <Content Include="Content\js\jquery.mask.min.js" />
     <Content Include="Content\js\jquery.validate.js" />
@@ -1725,7 +1726,7 @@
     <Content Include="Content\plugins\slick\slick-theme.css" />
     <Content Include="Content\plugins\slick\slick.css" />
     <Content Include="Content\plugins\social-buttons\social-buttons.css" />
-    <Content Include="Content\plugins\steps\jquery.steps.css" />
+    <Content Include="Content\plugins\switchery\steps\jquery.steps.css" />
     <Content Include="Content\plugins\summernote\summernote-bs4.css" />
     <Content Include="Content\plugins\sweetalert\sweetalert.css" />
     <Content Include="Content\plugins\switchery\switchery.css" />
