@@ -1,5 +1,8 @@
 ﻿$(function () {
     var Control = function () {
+        //$('#ddldepartment').select2();
+        //$('#ddldesignation').select2();
+        //$('#ddlgender').select2();
         return {
             empName: $("#empName"),
             empdate: $("#empdate"),
@@ -122,7 +125,7 @@
                 objClient.CommonMethods.Get_Designation();
                 objClient.CommonMethods.Get_AllEmployeeDetails();
                 $("#empdate").datepicker();
-                $('#ddldepartment').select2();
+              
             },
             Click: function () {
                 $(document).on('click', '#btnSave', function () {
@@ -248,6 +251,7 @@
                         if (response.Data.code == 2) {
                             alertify.success(response.Data.Msg);
                             objClient.CommonMethods.Claer_Fields();
+                            objClient.CommonMethods.Get_AllEmployeeDetails(); 
 
                         }
 

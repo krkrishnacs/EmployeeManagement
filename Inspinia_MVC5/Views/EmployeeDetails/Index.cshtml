@@ -3,11 +3,12 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_2.cshtml";
 }
-<link href="~/Content/Select2/select2.min.css" rel="stylesheet" />
-<script src="~/Content/Select2/select2.min.js"></script>
+
 <link href="~/Content/plugins/datapicker/datepicker3.css" rel="stylesheet" />
 <script src="~/Scripts/plugins/datapicker/bootstrap-datepicker.js"></script>
 <script src="~/Scripts/app/EmployeeDetails.js"></script>
+<link href="~/Content/Select2/select2.min.css" rel="stylesheet" />
+<script src="~/Content/Select2/select2.min.js"></script>
 <script src="~/Content/js/jquery.mask.min.js"></script>
 
 <div class="wrapper wrapper-content app-page-start">
@@ -22,11 +23,11 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label class="required">Employee Name:</label>
-                            <input type="text" class="form-control input-sm t-name" name="empName" id="empName" placeholder="Enter Employee Name" required />
+                            <input type="text" class="form-control input-sm t-name" name="empName" id="empName" placeholder="Enter Employee Name"autocomplete="off" required  />
                         </div>
                         <div class="col-md-3">
                             <label class="required">Employee Date Of Birth:</label>
-                            <input type="text" class="form-control input-sm t-name" name="empdate" id="empdate" placeholder="Enter Employee Date Of Birth" required />
+                            <input type="text" class="form-control input-sm t-name" name="empdate" id="empdate" placeholder="Enter Employee Date Of Birth" autocomplete="off" required />
                         </div>
                         <div class="col-md-3">
                             <label class="required">Department Name:</label>
@@ -51,11 +52,11 @@
                         </div>
                         <div class="col-md-3">
                             <label class="required">Mobile Number:</label>
-                            <input type="text" class="form-control input-sm t-name" name="mobileno" id="mobileno" placeholder="Enter Mobile Number" required />
+                            <input type="text" class="form-control input-sm t-name" name="mobileno" id="mobileno" autocomplete="off" placeholder="Enter Mobile Number" required />
                         </div>
                         <div class="col-md-3">
                             <label class="required">Employee Address:</label>
-                            <input type="text" class="form-control input-sm t-name" name="empaddress" id="empaddress" placeholder="Enter Address" required />
+                            <input type="text" class="form-control input-sm t-name" name="empaddress" id="empaddress" autocomplete="off" placeholder="Enter Address" required />
                         </div>
                         <div class="col-md-1">
                             <label class="">Is Active :</label>
