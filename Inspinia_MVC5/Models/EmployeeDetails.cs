@@ -14,17 +14,19 @@ namespace Inspinia_MVC5.Models
         public string Gender { get; set; }
         public string MobileNumber { get; set; }
         public string EmployeeAddress { get; set; }
+        public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
+        public int DesignationId { get; set; }
         public string DesignationName { get; set; }
         public bool IsActive { get; set; }
     }
     public class Department
     {
-        public int Id { get; set; }
+        public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
     }public class Designation
     {
-        public int Id { get; set; }
+        public int DesignationId { get; set; }
         public string DesignationName { get; set; }
     }
 }

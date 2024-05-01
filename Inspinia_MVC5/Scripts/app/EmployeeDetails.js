@@ -125,6 +125,7 @@
                 objClient.CommonMethods.Get_Designation();
                 objClient.CommonMethods.Get_AllEmployeeDetails();
                 $("#empdate").datepicker();
+                $('#ddldepartment').select2();
               
             },
             Click: function () {
@@ -201,7 +202,7 @@
                         Control().ddldepartment.empty();
                         var ddlHtml = '<option value="">--select-- </option>';
                         $.each(response.Data, function (index, value) {
-                            ddlHtml += '<option value="' + value.Id + '">' + value.DepartmentName + '</option>';
+                            ddlHtml += '<option value="' + value.DepartmentId + '">' + value.DepartmentName + '</option>';
                         });
                         Control().ddldepartment.append(ddlHtml);
                     }
@@ -216,7 +217,7 @@
                         Control().ddldesignation.empty();
                         var ddlHtml = '<option value="">--select-- </option>';
                         $.each(response.Data, function (index, value) {
-                            ddlHtml += '<option value="' + value.Id + '">' + value.DesignationName + '</option>';
+                            ddlHtml += '<option value="' + value.DesignationId + '">' + value.DesignationName + '</option>';
                         });
                         Control().ddldesignation.append(ddlHtml);
                     }
@@ -234,8 +235,8 @@
                         Gender: Control().ddlgender.val(),
                         MobileNumber: Control().mobileno.val(),
                         EmployeeAddress: Control().empaddress.val(),
-                        DepartmentName: Control().ddldepartment.val(),
-                        DesignationName: Control().ddldesignation.val(),
+                        DepartmentId: Control().ddldepartment.val(),
+                        DesignationId: Control().ddldesignation.val(),
                         IsActive: Control().isactive.is(":checked"),
                     };
                 }
@@ -246,6 +247,7 @@
                     if (response.Status == 200) {
                         if (response.Data.code == 1) {
                             alertify.success(response.Data.Msg);
+                            objClient.CommonMethods.Get_AllEmployeeDetails(); 
                             objClient.CommonMethods.Claer_Fields();
                         }
                         if (response.Data.code == 2) {
@@ -271,7 +273,7 @@
                             data: data,
                             responsive: false,
                             columns: [
-                                { title: "<span>ID</span>", data: 'Id' },
+                                { title: "<span>#</span>", data: 'Id' },
                                 { title: "<span>Employee Name</span>", data: 'EmployeeName' },
                                 { title: "<span>Date of Birth </span>", data: 'DateofBirth' },
                                 { title: "<span>Gender</span>", data: 'Gender' },
@@ -440,20 +442,20 @@
                 });
                 return true;
             },
-            Claer_Fields: function () {
-                $("#hdnCollegeID").val(''),
-                    Control().collegename.val(''),
-                    Control().collegeaddress.val(''),
-                    Control().collegecode.val(''),
-                    Control().examcname.val(''),
-                    Control().email.val(''),
-                    Control().mobileno.val(''),
-                    Control().website.val(''),
-                    Control().contactperson.val(''),
-                    Control().isactive.prop("checked", false);
-                    $("#btnSave ").text('Save');
+            //Claer_Fields: function () {
+            //    $("#hdnId").val(''),
+            //        Control().collegename.val(''),
+            //        Control().collegeaddress.val(''),
+            //        Control().collegecode.val(''),
+            //        Control().examcname.val(''),
+            //        Control().email.val(''),
+            //        Control().mobileno.val(''),
+            //        Control().website.val(''),
+            //        Control().contactperson.val(''),
+            //        Control().isactive.prop("checked", false);
+            //        $("#btnSave ").text('Save');
 
-            },
+            //},
         }
     };
     objClient.Initialization();

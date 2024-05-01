@@ -22,8 +22,8 @@ namespace Inspinia_MVC5.AppCodes.Dal
             cmd.Parameters.AddWithValue("@Gender", employeeDetails.Gender.ReplaceDbNull());
             cmd.Parameters.AddWithValue("@MobileNumber", employeeDetails.MobileNumber.ReplaceDbNull());
             cmd.Parameters.AddWithValue("@EmployeeAddress", employeeDetails.EmployeeAddress.ReplaceDbNull());
-            cmd.Parameters.AddWithValue("@DepartmentName", employeeDetails.DepartmentName.ReplaceDbNull());
-            cmd.Parameters.AddWithValue("@DesignationName", employeeDetails.DesignationName.ReplaceDbNull());
+            cmd.Parameters.AddWithValue("@DepartmentId", employeeDetails.DepartmentId.ReplaceDbNull());
+            cmd.Parameters.AddWithValue("@DesignationId", employeeDetails.DesignationId.ReplaceDbNull());
             cmd.Parameters.AddWithValue("@IsActive", employeeDetails.IsActive.ReplaceDbNull());
             return GetResult(cmd).Convert<DBMessage>().FirstOrDefault();
         }
