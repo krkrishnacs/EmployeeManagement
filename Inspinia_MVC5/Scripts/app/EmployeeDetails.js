@@ -121,6 +121,13 @@
         },
         Events: {
             OnLoad: function () {
+                $(document).ready(function () {
+                    // Iterate over each row in the tbody
+                    $('#tblEmployeeDetails tbody tr').each(function (index) {
+                        // Set the serial number in the first column
+                        $(this).find('td:first').text(index + 1);
+                    });
+                });
                 objClient.CommonMethods.Get_Department();
                 objClient.CommonMethods.Get_Designation();
                 objClient.CommonMethods.Get_AllEmployeeDetails();
