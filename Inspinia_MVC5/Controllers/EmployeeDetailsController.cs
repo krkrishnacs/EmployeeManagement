@@ -57,6 +57,16 @@ namespace Inspinia_MVC5.Controllers
             _cr.Message = "Success";
             return Json(_cr);
         }
+        [HttpPost]
+        public ActionResult GetDataForEditByID(EmployeeDetails employeeDetails)
+        {
+            var employeeDetailsService = new EmployeeDetailsService(null);
+            var res = employeeDetailsService.GetDataForEditByID(employeeDetails);
+            _cr.Data = res;
+            _cr.Status = HttpStatusCode.OK;
+            _cr.Message = "Success";
+            return Json(_cr);
+        }
 
     }
 }

@@ -44,5 +44,12 @@ namespace Inspinia_MVC5.AppCodes.Services
                 return resource.Get_AllEmployeeDetails();
             }
         }
+        public EmployeeDetails GetDataForEditByID(EmployeeDetails employeeDetails)
+        {
+            using (EmployeeDetailsDal resource = new EmployeeDetailsDal(null))
+            {
+                return resource.GetDataForEditByID(employeeDetails);
+            }
+        }
     }
 }

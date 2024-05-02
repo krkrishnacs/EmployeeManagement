@@ -97,7 +97,7 @@
                 data: JSON.stringify(data),
                 dataType: 'json',
                 async: false,
-                url: '/CollegeStudent/GetDataForEditByID',
+                url: '/EmployeeDetails/GetDataForEditByID',
                 success: function (responce) {
                     $(".loading-overlay").hide();
                     callback(responce);
@@ -124,8 +124,24 @@
                 objClient.CommonMethods.Get_Department();
                 objClient.CommonMethods.Get_Designation();
                 objClient.CommonMethods.Get_AllEmployeeDetails();
-                $("#empdate").datepicker();
-                $('#ddldepartment').select2();
+                /*$("#empdate").datepicker();*/
+                /*$('#ddldepartment').select2();*/
+                $('#empdate').datepicker({
+                    showOtherMonths: true,
+                    selectOtherMonths: true,
+                    changeYear: true,
+                    changeMonth: true,
+                    dateFormat: 'dd/mm/yy',
+                   /* showOn: 'both',*/
+                    //buttonImage: 'images/calendar_icon.png',
+                    buttonImageOnly: false,
+                    closeText: 'X',
+                    showAnim: 'drop',
+                    showButtonPanel: false,
+                    duration: 'slow',
+                    endDate: '+0d',
+                    autoclose: true
+                });
               
             },
             Click: function () {
@@ -136,7 +152,7 @@
                     location.reload();
                 });
              
-                $("#tblcollegestu").on('click', '.btnEditOnline', function () {
+                $("#tblEmployeeDetails").on('click', '.btnEditOnline', function () {
                     objClient.CommonMethods.GetDataForEditByID($(this).closest('tr').find('td:eq(0)').text());
 
                 });
@@ -247,8 +263,8 @@
                     if (response.Status == 200) {
                         if (response.Data.code == 1) {
                             alertify.success(response.Data.Msg);
-                            objClient.CommonMethods.Get_AllEmployeeDetails(); 
                             objClient.CommonMethods.Claer_Fields();
+                            objClient.CommonMethods.Get_AllEmployeeDetails(); 
                         }
                         if (response.Data.code == 2) {
                             alertify.success(response.Data.Msg);
@@ -279,7 +295,9 @@
                                 { title: "<span>Gender</span>", data: 'Gender' },
                                 { title: "<span>Mobile Number</span>", data: 'MobileNumber' },
                                 { title: "<span>Employee Address</span>", data: 'EmployeeAddress' },
+                                { title: "<span>Department Name</span>", data: 'DepartmentId' },
                                 { title: "<span>Department Name</span>", data: 'DepartmentName' },
+                                { title: "<span>Designation Name</span>", data: 'DesignationId' },
                                 { title: "<span>Designation Name</span>", data: 'DesignationName' },
                                 { title: "<span> IsActive </span>", data: 'IsActive' },
                                 { title: "<span>Action</span>", data: '' },
@@ -305,6 +323,16 @@
                                     "targets": 3,
                                     "visible": true,
                                     "className": "text-center",
+                                    "render": function (data) {
+                                        if (data === 'M') {
+                                            return 'Male';
+                                        } else if (data === 'F') {
+                                            return 'Female';
+                                        } else if (data === 'T') {
+                                            return 'Transgender';
+                                        } 
+                                    }
+
                                 },
                                 {
                                     "visible": true,
@@ -318,19 +346,30 @@
                                     "className": " text-center"
                                 },
                                 {
-                                    "visible": true,
+                                    "visible": false,
                                     "targets": 6,
-                                    "className": "text-center",
+                                    "className": "text-center hide_column",
 
                                 },
                                 {
                                     "visible": true,
                                     "targets": 7,
+                                    "className": "text-center",
+
+                                },
+                                {
+                                    "visible": false,
+                                    "targets": 8,
+                                    "className": " text-center hide_column"
+                                },
+                                {
+                                    "visible": true,
+                                    "targets": 9,
                                     "className": " text-center"
                                 },
                                 {
                                     "visible": true,
-                                    "targets": 8,
+                                    "targets": 10,
                                     "className": "text-center",
                                     "render": function (data, a, row) {
                                         return row.IsActive === true ? "Yes" : "No";
@@ -338,7 +377,7 @@
                                 },
 
                                 {
-                                    "targets": 9,
+                                    "targets": 11,
                                     "className": "text-center",
                                     'visible': true,
                                     "render": function (data, a, row) {
@@ -375,24 +414,24 @@
                 });
 
             },
-            GetDataForEditByID: function (CollegeID) {
+            GetDataForEditByID: function (Id) {
                 var reqObj = {
-                    CollegeID: CollegeID
+                    Id: Id
                 };
                 objServer.GetDataForEditByID(reqObj, function (response) {
                     if (response.Status == 200) {
                         var data = response.Data;
-                        $("#hdnCollegeID").val(data.CollegeID);
-                        Control().collegename.val(data.CollegeName);
-                        Control().collegeaddress.val(data.CollegeAddress);
-                        Control().collegecode.val(data.CollegeCode);
-                        Control().examcname.val(data.ExamCenterName);
-                        Control().email.val(data.Email);
-                        Control().mobileno.val(data.Mobile);
-                        Control().website.val(data.Website);
-                        Control().contactperson.val(data.ContactPerson);
+                        $("#hdnID").val(data.Id);
+                        Control().empName.val(data.EmployeeName);
+                        Control().empdate.val(data.DateofBirth);
+                        Control().ddldepartment.val(data.DepartmentId);
+                        Control().ddldesignation.val(data.DesignationId);
+                        Control().ddlgender.val(data.Gender);
+                        Control().mobileno.val(data.MobileNumber);
+                        Control().empaddress.val(data.EmployeeAddress);
                         Control().isactive.attr('checked', data.IsActive);
                         $("#btnSave").text("Update");
+                        objClient.CommonMethods.Get_AllEmployeeDetails();
                     }
                     else {
                         alertify.error(response.Message);
@@ -442,20 +481,19 @@
                 });
                 return true;
             },
-            //Claer_Fields: function () {
-            //    $("#hdnId").val(''),
-            //        Control().collegename.val(''),
-            //        Control().collegeaddress.val(''),
-            //        Control().collegecode.val(''),
-            //        Control().examcname.val(''),
-            //        Control().email.val(''),
-            //        Control().mobileno.val(''),
-            //        Control().website.val(''),
-            //        Control().contactperson.val(''),
-            //        Control().isactive.prop("checked", false);
-            //        $("#btnSave ").text('Save');
+            Claer_Fields: function () {
+                $("#hdnId").val(''),
+                    Control().empName.val(''),
+                    Control().empaddress.val(''),
+                    Control().empdate.val(''),
+                    Control().ddldepartment.val(''),
+                    Control().ddldesignation.val(''),
+                    Control().ddlgender.val(''),
+                    Control().mobileno.val(''),
+                    Control().isactive.prop("checked", false);
+                    $("#btnSave ").text('Save');
 
-            //},
+            },
         }
     };
     objClient.Initialization();

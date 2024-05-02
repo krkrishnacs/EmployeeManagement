@@ -42,5 +42,11 @@ namespace Inspinia_MVC5.AppCodes.Dal
             var dt = GetResult(cmd);
             return dt.Convert<EmployeeDetails>();
         }
+        public EmployeeDetails GetDataForEditByID(EmployeeDetails employeeDetails)
+        {
+            var cmd = NewCommand("dbo.GetEmployeeDetailByID");
+            cmd.Parameters.AddWithValue("@Id", employeeDetails.Id.ReplaceDbNull());
+            return GetResult(cmd).Convert<EmployeeDetails>().FirstOrDefault();
+        }
     }
 }
