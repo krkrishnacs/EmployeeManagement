@@ -126,6 +126,7 @@
     <Compile Include="AppCodes\Dal\EmployeeDetailsDal.cs" />
     <Compile Include="AppCodes\DbHandler.cs" />
     <Compile Include="AppCodes\Services\AccountDataService.cs" />
+    <Compile Include="AppCodes\Services\AccountService.cs" />
     <Compile Include="AppCodes\Services\EmployeeDetailsService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Controllers\ScaffoldingController.cs" />
     <Compile Include="Controllers\TablesController.cs" />
+    <Compile Include="Controllers\TransactioMasterController.cs" />
     <Compile Include="Controllers\UIElementsController.cs" />
     <Compile Include="Controllers\WidgetsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1613,6 +1615,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\email.css" />
+    <Content Include="Content\Font-Awesome\all.min.css" />
     <Content Include="Content\jqGrid\ui.jqgrid.css" />
     <Content Include="Content\js\alasql.min.js" />
     <Content Include="Content\js\jquery.mask.min.js" />
@@ -2943,6 +2946,7 @@
     <Content Include="Scripts\app\inspinia.js" />
     <Content Include="Scripts\app\Login.js" />
     <Content Include="Scripts\app\skin.config.min.js" />
+    <Content Include="Scripts\app\TransactionYearMaster.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -3515,6 +3519,15 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\MainDashboard.cshtml" />
     <Content Include="Views\EmployeeDetails\Index.cshtml" />
+    <Content Include="webfonts\fa-brands-400.ttf" />
+    <Content Include="webfonts\fa-brands-400.woff2" />
+    <Content Include="webfonts\fa-regular-400.ttf" />
+    <Content Include="webfonts\fa-regular-400.woff2" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
+    <Content Include="webfonts\fa-v4compatibility.ttf" />
+    <Content Include="webfonts\fa-v4compatibility.woff2" />
+    <Content Include="Views\TransactioMaster\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

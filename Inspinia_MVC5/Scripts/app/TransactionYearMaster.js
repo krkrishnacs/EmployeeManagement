@@ -1,8 +1,5 @@
 ﻿$(function () {
     var Control = function () {
-        //$('#ddldepartment').select2();
-        //$('#ddldesignation').select2();
-        //$('#ddlgender').select2();
         return {
             empName: $("#empName"),
             empdate: $("#empdate"),
@@ -121,25 +118,14 @@
         },
         Events: {
             OnLoad: function () {
-                //$(document).ready(function () {
-                //    // Iterate over each row in the tbody
-                //    $('#tblEmployeeDetails tbody').each(function (index) {
-                //        // Set the serial number in the first column
-                //        $(this).find('td:first').text(index + 1);
-                //    });
-                //});
-                objClient.CommonMethods.Get_Department();
-                objClient.CommonMethods.Get_Designation();
-                objClient.CommonMethods.Get_AllEmployeeDetails();
-                /*$("#empdate").datepicker();*/
-                /*$('#ddldepartment').select2();*/
+                $('#exampleModal').modal('hide');
                 $('#empdate').datepicker({
                     showOtherMonths: true,
                     selectOtherMonths: true,
                     changeYear: true,
                     changeMonth: true,
                     dateFormat: 'dd/mm/yy',
-                   /* showOn: 'both',*/
+                    /* showOn: 'both',*/
                     //buttonImage: 'images/calendar_icon.png',
                     buttonImageOnly: false,
                     closeText: 'X',
@@ -149,21 +135,14 @@
                     endDate: '+0d',
                     autoclose: true
                 });
-              
+
             },
             Click: function () {
-                $(document).on('click', '#btnSave', function () {
-                    objClient.CommonMethods.Add_UpdateEmployeeDetails();
+               
+                $(document).on('click', '#btnAddTransaction', function () {
+                    $('#exampleModal').modal('show');
+                    /*$('#hidetrtbl').modal('hide');*/
                 });
-                $(document).on('click', '#btnRefresh', function () {
-                    location.reload();
-                });
-             
-                $("#tblEmployeeDetails").on('click', '.btnEditOnline', function () {
-                    objClient.CommonMethods.GetDataForEditByID($(this).closest('tr').find('td:eq(0)').text());
-
-                });
-
             },
             Blur: function () {
             },
@@ -271,12 +250,12 @@
                         if (response.Data.code == 1) {
                             alertify.success(response.Data.Msg);
                             objClient.CommonMethods.Claer_Fields();
-                            objClient.CommonMethods.Get_AllEmployeeDetails(); 
+                            objClient.CommonMethods.Get_AllEmployeeDetails();
                         }
                         if (response.Data.code == 2) {
                             alertify.success(response.Data.Msg);
                             objClient.CommonMethods.Claer_Fields();
-                            objClient.CommonMethods.Get_AllEmployeeDetails(); 
+                            objClient.CommonMethods.Get_AllEmployeeDetails();
 
                         }
 
@@ -337,7 +316,7 @@
                                             return 'Female';
                                         } else if (data === 'T') {
                                             return 'Transgender';
-                                        } 
+                                        }
                                     }
 
                                 },
@@ -498,7 +477,7 @@
                     Control().ddlgender.val(''),
                     Control().mobileno.val(''),
                     Control().isactive.prop("checked", false);
-                    $("#btnSave ").text('Save');
+                $("#btnSave ").text('Save');
 
             },
         }

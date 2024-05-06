@@ -11,6 +11,8 @@
     <!-- Add local styles, mostly for plugins css file -->
     @if (IsSectionDefined("Styles"))
     {@RenderSection("Styles", required: false)}
+    @*font-awesome cdn of css*@
+    <link href="~/Content/Font-Awesome/all.min.css" rel="stylesheet" />
 
     <!-- Add jQuery Style direct - used for jQGrid plugin -->
     <link href="@Url.Content("~/Scripts/plugins/jquery-ui/jquery-ui.min.css")" rel="stylesheet" type="text/css" />
