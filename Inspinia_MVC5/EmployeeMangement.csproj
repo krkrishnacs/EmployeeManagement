@@ -116,14 +116,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Views\ControllerBase\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppCodes\DalBase.cs" />
     <Compile Include="AppCodes\Dal\AccountDal.cs" />
     <Compile Include="AppCodes\Dal\AccountRepo.cs" />
+    <Compile Include="AppCodes\Dal\EmployeeDetailsDal.cs" />
     <Compile Include="AppCodes\DbHandler.cs" />
     <Compile Include="AppCodes\Services\AccountDataService.cs" />
+    <Compile Include="AppCodes\Services\AccountService.cs" />
+    <Compile Include="AppCodes\Services\EmployeeDetailsService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -151,6 +155,7 @@
     <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Controllers\ScaffoldingController.cs" />
     <Compile Include="Controllers\TablesController.cs" />
+    <Compile Include="Controllers\TransactioMasterController.cs" />
     <Compile Include="Controllers\UIElementsController.cs" />
     <Compile Include="Controllers\WidgetsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -160,7 +165,7 @@
     <Compile Include="Models\AccountData.cs" />
     <Compile Include="Models\Attendence.cs" />
     <Compile Include="Models\ClientJsonResult.cs" />
-    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeDetails.cs" />
     <Compile Include="Models\ScaffoldingContext.cs" />
     <Compile Include="Models\ScaffoldingController.cs" />
     <Compile Include="Models\UserLogin.cs" />
@@ -1610,6 +1615,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\email.css" />
+    <Content Include="Content\Font-Awesome\all.min.css" />
+    <Content Include="Content\jqGrid\ui.jqgrid.css" />
     <Content Include="Content\js\alasql.min.js" />
     <Content Include="Content\js\jquery.mask.min.js" />
     <Content Include="Content\js\jquery.validate.js" />
@@ -1722,7 +1729,7 @@
     <Content Include="Content\plugins\slick\slick-theme.css" />
     <Content Include="Content\plugins\slick\slick.css" />
     <Content Include="Content\plugins\social-buttons\social-buttons.css" />
-    <Content Include="Content\plugins\steps\jquery.steps.css" />
+    <Content Include="Content\plugins\switchery\steps\jquery.steps.css" />
     <Content Include="Content\plugins\summernote\summernote-bs4.css" />
     <Content Include="Content\plugins\sweetalert\sweetalert.css" />
     <Content Include="Content\plugins\switchery\switchery.css" />
@@ -2082,7 +2089,6 @@
     <Content Include="Content\SCSS\_top_navigation.scss" />
     <Content Include="Content\SCSS\_typography.scss" />
     <Content Include="Content\SCSS\_variables.scss" />
-    <None Include="Properties\PublishProfiles\Inspinia.pubxml" />
     <Content Include="Images\a1.jpg" />
     <Content Include="Images\a2.jpg" />
     <Content Include="Images\a3.jpg" />
@@ -2936,14 +2942,17 @@
     <Content Include="Images\p_big3.jpg" />
     <Content Include="Images\zender_logo.png" />
     <Content Include="Scripts\app\Account.js" />
+    <Content Include="Scripts\app\EmployeeDetails.js" />
     <Content Include="Scripts\app\inspinia.js" />
     <Content Include="Scripts\app\Login.js" />
     <Content Include="Scripts\app\skin.config.min.js" />
+    <Content Include="Scripts\app\TransactionYearMaster.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\Jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\oth.plugin\alasql.js" />
     <Content Include="Scripts\oth.plugin\alertify.js" />
@@ -3300,6 +3309,7 @@
     <Content Include="Scripts\plugins\jquery-ui\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Scripts\plugins\jquery-ui\jquery-ui.min.css" />
     <Content Include="Scripts\plugins\jquery-ui\jquery-ui.min.js" />
+    <Content Include="Scripts\plugins\JQuery\jquerfile.js" />
     <Content Include="Scripts\plugins\jsKnob\jquery.knob.js" />
     <Content Include="Scripts\plugins\jsTree\jstree.min.js" />
     <Content Include="Scripts\plugins\justified-gallery\jquery.justifiedgallery.css" />
@@ -3509,6 +3519,15 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\MainDashboard.cshtml" />
     <Content Include="Views\EmployeeDetails\Index.cshtml" />
+    <Content Include="webfonts\fa-brands-400.ttf" />
+    <Content Include="webfonts\fa-brands-400.woff2" />
+    <Content Include="webfonts\fa-regular-400.ttf" />
+    <Content Include="webfonts\fa-regular-400.woff2" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
+    <Content Include="webfonts\fa-v4compatibility.ttf" />
+    <Content Include="webfonts\fa-v4compatibility.woff2" />
+    <Content Include="Views\TransactioMaster\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

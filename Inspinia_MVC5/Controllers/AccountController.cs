@@ -6,12 +6,13 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Inspinia_MVC5.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : ControllerBase
     {
         // GET: Account
         public ActionResult Index()
@@ -99,6 +100,15 @@ namespace Inspinia_MVC5.Controllers
             }
         }
 
-
+        //[HttpPost]
+        //public ActionResult GetStrengthOfEmployee()
+        //{
+        //    var feeService = new AdmissionDashboardService(null);
+        //    var res = feeService.GetStrengthOfEmployee();
+        //    _cr.Data = res;
+        //    _cr.Status = HttpStatusCode.OK;
+        //    _cr.Message = "Success";
+        //    return Json(_cr);
+        //}
     }
 }
