@@ -1,27 +1,24 @@
 ﻿$(function () {
     var Control = function () {
         return {
-            empName: $("#empName"),
-            empdate: $("#empdate"),
-            ddldepartment: $("#ddldepartment"),
-            ddldesignation: $("#ddldesignation"),
-            ddlgender: $("#ddlgender"),
-            mobileno: $("#mobileno"),
-            empaddress: $("#empaddress"),
-            isactive: $("#isactive"),
+            transactionYear: $("#transactionYear"),
+            fromyear: $("#fromyear"),
+            fromonth: $("#fromonth"),
+            ToYear: $("#ToYear"),
+            ToMonth: $("#ToMonth"),
+            Status: $("#Status"),
             hdnID: $("#hdnID"),
-            tblEmployeeDetails: $("#tblEmployeeDetails"),
         };
     };
     var objServer = {
-        Add_UpdateEmployeeDetails: function (data, callback) {
+        AddTransactionMaster: function (data, callback) {
             $.ajax({
                 type: 'post',
                 contentType: 'application/json;charset=utf-8;',
                 data: JSON.stringify(data),
                 dataType: 'json',
                 async: false,
-                url: '/EmployeeDetails/Add_UpdateEmployeeDetails',
+                url: '/TransactionMaster/AddTransactionMaster',
                 success: function (responce) {
                     $(".loading-overlay").hide();
                     callback(responce);
@@ -32,14 +29,14 @@
                 }
             });
         },
-        Get_Department: function (callback) {
+        Get_TransactionYear: function (callback) {
             $.ajax({
                 type: 'post',
                 contentType: 'application/json;charset=utf-8;',
                 data: '',
                 dataType: 'json',
                 async: false,
-                url: '/EmployeeDetails/Get_Department',
+                url: '/TransactionMaster/Get_TransactionYear',
                 success: function (responce) {
                     $(".loading-overlay").hide();
                     callback(responce);
@@ -50,14 +47,68 @@
                 }
             });
         },
-        Get_Designation: function (callback) {
+        GetToYear: function (callback) {
             $.ajax({
                 type: 'post',
                 contentType: 'application/json;charset=utf-8;',
                 data: '',
                 dataType: 'json',
                 async: false,
-                url: '/EmployeeDetails/Get_Designation',
+                url: '/TransactionMaster/GetToYear',
+                success: function (responce) {
+                    $(".loading-overlay").hide();
+                    callback(responce);
+                },
+                error: function () {
+                    $(".loading-overlay").hide();
+                    callback('error');
+                }
+            });
+        },
+        GetFromYear: function (callback) {
+            $.ajax({
+                type: 'post',
+                contentType: 'application/json;charset=utf-8;',
+                data: '',
+                dataType: 'json',
+                async: false,
+                url: '/TransactionMaster/GetFromYear',
+                success: function (responce) {
+                    $(".loading-overlay").hide();
+                    callback(responce);
+                },
+                error: function () {
+                    $(".loading-overlay").hide();
+                    callback('error');
+                }
+            });
+        },
+        GetFromMonth: function (callback) {
+            $.ajax({
+                type: 'post',
+                contentType: 'application/json;charset=utf-8;',
+                data: '',
+                dataType: 'json',
+                async: false,
+                url: '/TransactionMaster/GetFromMonth',
+                success: function (responce) {
+                    $(".loading-overlay").hide();
+                    callback(responce);
+                },
+                error: function () {
+                    $(".loading-overlay").hide();
+                    callback('error');
+                }
+            });
+        },
+        GetToMonth: function (callback) {
+            $.ajax({
+                type: 'post',
+                contentType: 'application/json;charset=utf-8;',
+                data: '',
+                dataType: 'json',
+                async: false,
+                url: '/TransactionMaster/GetToMonth',
                 success: function (responce) {
                     $(".loading-overlay").hide();
                     callback(responce);
@@ -118,27 +169,84 @@
         },
         Events: {
             OnLoad: function () {
-                $('#exampleModal').modal('hide');
-                $('#empdate').datepicker({
-                    showOtherMonths: true,
-                    selectOtherMonths: true,
-                    changeYear: true,
-                    changeMonth: true,
-                    dateFormat: 'dd/mm/yy',
-                    /* showOn: 'both',*/
-                    //buttonImage: 'images/calendar_icon.png',
-                    buttonImageOnly: false,
-                    closeText: 'X',
-                    showAnim: 'drop',
-                    showButtonPanel: false,
-                    duration: 'slow',
-                    endDate: '+0d',
-                    autoclose: true
-                });
+                objClient.CommonMethods.Get_TransactionYear();
+                objClient.CommonMethods.GetFromYear();
+                objClient.CommonMethods.GetToYear();
+                objClient.CommonMethods.GetFromMonth();
+                objClient.CommonMethods.GetToMonth();
+                $(document).ready(function () {
+                    $("#myModal").modal();
 
+                    // Show a toaster message when the modal is opened
+                    //$("#btnSvae").on("shown.bs.modal", function () {
+                    //    toastr.error("This is a toaster message!");
+                    //});
+                });
+                $('#exampleModal').modal('hide');
+                //$('#fromonth,#ToMonth').datepicker({
+                //    showOtherMonths: true,
+                //    selectOtherMonths: true,
+                //    changeYear: true,
+                //    changeMonth: false,
+                //    /*dateFormat: 'dd/mm/yy',*/
+                //    /* showOn: 'both',*/
+                //    //buttonImage: 'images/calendar_icon.png',
+                //    //buttonImageOnly: false,
+                //    //closeText: 'X',
+                //    //showAnim: 'drop',
+                //    //showButtonPanel: false,
+                //    //duration: 'slow',
+                //    //endDate: '+0d',
+                //    //autoclose: true
+                //});
+               //Jquery Show Month Only
+                //$(document).ready(function () {
+                //    $("#fromonth,#ToMonth").datepicker({
+                //        dateFormat: 'mm',
+                //        changeMonth: true,
+                //        changeYear: false,
+                //        showButtonPanel: true,
+                //        onClose: function (dateText, inst) {
+                //            $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                //        },
+                //        beforeShow: function (input, inst) {
+                //            $('#ui-datepicker-div').addClass('hide-calendar');
+                //            if ((datestr = $(this).val()).length > 0) {
+                //                year = datestr.substring(datestr.length - 4, datestr.length);
+                //                month = parseInt(datestr.substring(0, 2));
+                //                $(this).datepicker('option', 'defaultDate', new Date( month - 1, 1));
+                //                $(this).datepicker('setDate', new Date(month - 1, 1));
+                //            }
+                //        }
+                //    });
+                //});
             },
             Click: function () {
-               
+                $('#btnSvae').click(function () {
+                    var fromYear = parseInt($('#fromyear').val());
+                    var toYear = parseInt($('#ToYear').val());
+
+                    if (fromYear >= toYear) {
+                        alertify.error("Please select From Year&To Year Correct Way");
+                        return false; // Prevent form submission
+                    }
+                    var fromMonth = parseInt($('#fromonth').val());
+                    var toMonth = parseInt($('#ToMonth').val());
+
+                    if (fromMonth >= toMonth) {
+                        alertify.error("Please select From Month in  Correct Way");
+                        return false; // Prevent form submission
+                    }
+                    var Text = $("#btnSave").text();
+                    if (Text == 'Save') {
+                        if (objClient.CommonMethods.Validate_Flied()) {
+                            objClient.CommonMethods.AddTransactionMaster();
+                        }
+                    }
+                    else {
+                        objClient.CommonMethods.AddTransactionMaster();
+                    }
+                });
                 $(document).on('click', '#btnAddTransaction', function () {
                     $('#exampleModal').modal('show');
                     /*$('#hidetrtbl').modal('hide');*/
@@ -198,64 +306,105 @@
             }
         },
         CommonMethods: {
-            Get_Department: function () {
-                objServer.Get_Department(function (response) {
+            Get_TransactionYear: function () {
+                objServer.Get_TransactionYear(function (response) {
                     if (response.Status === 200) {
-                        Control().ddldepartment.empty();
+                        Control().transactionYear.empty();
                         var ddlHtml = '<option value="">--select-- </option>';
                         $.each(response.Data, function (index, value) {
-                            ddlHtml += '<option value="' + value.DepartmentId + '">' + value.DepartmentName + '</option>';
+                            ddlHtml += '<option value="' + value.Id + '">' + value.Val + '</option>';
                         });
-                        Control().ddldepartment.append(ddlHtml);
+                        Control().transactionYear.append(ddlHtml);
                     }
                     else {
                         alertify.error(response.Message);
                     }
                 });
             },
-            Get_Designation: function () {
-                objServer.Get_Designation(function (response) {
+            GetFromYear: function () {
+                objServer.GetFromYear(function (response) {
                     if (response.Status === 200) {
-                        Control().ddldesignation.empty();
+                        Control().fromyear.empty();
                         var ddlHtml = '<option value="">--select-- </option>';
                         $.each(response.Data, function (index, value) {
-                            ddlHtml += '<option value="' + value.DesignationId + '">' + value.DesignationName + '</option>';
+                            ddlHtml += '<option value="' + value.Id + '">' + value.Val + '</option>';
                         });
-                        Control().ddldesignation.append(ddlHtml);
+                        Control().fromyear.append(ddlHtml);
                     }
                     else {
                         alertify.error(response.Message);
                     }
                 });
             },
-            Add_UpdateEmployeeDetails: function () {
+            GetToYear: function () {
+                objServer.GetToYear(function (response) {
+                    if (response.Status === 200) {
+                        Control().ToYear.empty();
+                        var ddlHtml = '<option value="">--select-- </option>';
+                        $.each(response.Data, function (index, value) {
+                            ddlHtml += '<option value="' + value.Id + '">' + value.Val + '</option>';
+                        });
+                        Control().ToYear.append(ddlHtml);
+                    }
+                    else {
+                        alertify.error(response.Message);
+                    }
+                });
+            },
+            GetFromMonth: function () {
+                objServer.GetFromMonth(function (response) {
+                    if (response.Status === 200) {
+                        Control().fromonth.empty();
+                        var ddlHtml = '<option value="">--select-- </option>';
+                        $.each(response.Data, function (index, value) {
+                            ddlHtml += '<option value="' + value.Id + '">' + value.Val + '</option>';
+                        });
+                        Control().fromonth.append(ddlHtml);
+                    }
+                    else {
+                        alertify.error(response.Message);
+                    }
+                });
+            },
+            GetToMonth: function () {
+                objServer.GetToMonth(function (response) {
+                    if (response.Status === 200) {
+                        Control().ToMonth.empty();
+                        var ddlHtml = '<option value="">--select-- </option>';
+                        $.each(response.Data, function (index, value) {
+                            ddlHtml += '<option value="' + value.Id + '">' + value.Val + '</option>';
+                        });
+                        Control().ToMonth.append(ddlHtml);
+                    }
+                    else {
+                        alertify.error(response.Message);
+                    }
+                });
+            },
+            AddTransactionMaster: function () {
                 if (objClient.CommonMethods.Validate_Flied() == true) {
                     var reqObj = {
                         Id: Control().hdnID.val() == "" ? 0 : Control().hdnID.val(),
-                        EmployeeName: Control().empName.val(),
-                        DateofBirth: Control().empdate.val(),
-                        Gender: Control().ddlgender.val(),
-                        MobileNumber: Control().mobileno.val(),
-                        EmployeeAddress: Control().empaddress.val(),
-                        DepartmentId: Control().ddldepartment.val(),
-                        DesignationId: Control().ddldesignation.val(),
-                        IsActive: Control().isactive.is(":checked"),
+                        TransactionYear: Control().transactionYear.val(),
+                        FromYear: Control().fromyear.val(),
+                        FromMonth: Control().fromonth.val(),
+                        ToYear: Control().ToYear.val(),
+                        ToMonth: Control().ToMonth.val(),
+                        Status: Control().Status.is(":checked"),
                     };
                 }
                 else {
                     return false;
                 }
-                objServer.Add_UpdateEmployeeDetails(reqObj, function (response) {
+                objServer.AddTransactionMaster(reqObj, function (response) {
                     if (response.Status == 200) {
                         if (response.Data.code == 1) {
                             alertify.success(response.Data.Msg);
-                            objClient.CommonMethods.Claer_Fields();
-                            objClient.CommonMethods.Get_AllEmployeeDetails();
                         }
                         if (response.Data.code == 2) {
                             alertify.success(response.Data.Msg);
-                            objClient.CommonMethods.Claer_Fields();
-                            objClient.CommonMethods.Get_AllEmployeeDetails();
+                            //objClient.CommonMethods.Claer_Fields();
+                            //objClient.CommonMethods.Get_AllEmployeeDetails();
 
                         }
 
@@ -426,45 +575,21 @@
             },
             Validate_Flied: function () {
 
-                if (Control().empName.val() == '') {
+                if (Control().transactionYear.val() == '') {
                     alertify.error('Please Enter Employee Name'); return false;
                 }
-                if (Control().empdate.val() == '') {
-                    alertify.error('Please Select Employee Date of Birth:'); return false;
+                if (Control().fromyear.val() == '') {
+                    alertify.error('Please Select From Year:'); return false;
                 }
-                if (Control().ddlgender.val() == '') {
-                    alertify.error('Please Select Gender'); return false;
+                if (Control().fromonth.val() == '') {
+                    alertify.error('Please Select fROM mONTH'); return false;
                 }
-                if (Control().mobileno.val() == '') {
-                    alertify.error('Please Enter Mobile No'); return false;
+                if (Control().ToMonth.val() == '') {
+                    alertify.error('Please Select TO YEAR'); return false;
                 }
-                if (Control().ddldepartment.val() == '') {
-                    alertify.error('Please Select Department'); return false;
+                if (Control().ToYear.val() == '') {
+                    alertify.error('Please Select To Year'); return false;
                 }
-                if (Control().ddldesignation.val() == '') {
-                    alertify.error('Please Select Designation'); return false;
-                }
-                if (Control().empaddress.val() == '') {
-                    alertify.error('Please Enter Employee Address'); return false;
-                }
-
-                $("#mobileno").focusout(function () {
-                    var mobileNum = $(this).val();
-                    var validateMobNum = /^\d*(?:\.\d{1,2})?$/;
-                    if (validateMobNum.test(mobileNum) && mobileNum.length === 10) {
-                    }
-                    else {
-                        $(this).val("");
-                        alertify.error("Invalid Phone Number");
-                    }
-                });
-                $("#email").focusout(function () {
-                    var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-                    if (!regex.test($(this).val())) {
-                        $(this).val("");
-                        alertify.error("Please enter valid Email");
-                    }
-                });
                 return true;
             },
             Claer_Fields: function () {

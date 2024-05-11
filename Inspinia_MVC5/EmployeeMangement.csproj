@@ -120,14 +120,16 @@
     <Folder Include="Views\ControllerBase\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppCodes\DalBase.cs" />
+    <Compile Include="AppCodes\Dal\DalBase.cs" />
     <Compile Include="AppCodes\Dal\AccountDal.cs" />
     <Compile Include="AppCodes\Dal\AccountRepo.cs" />
     <Compile Include="AppCodes\Dal\EmployeeDetailsDal.cs" />
-    <Compile Include="AppCodes\DbHandler.cs" />
+    <Compile Include="AppCodes\Dal\TransactionMasterDal.cs" />
+    <Compile Include="AppCodes\Dal\DbHandler.cs" />
     <Compile Include="AppCodes\Services\AccountDataService.cs" />
     <Compile Include="AppCodes\Services\AccountService.cs" />
     <Compile Include="AppCodes\Services\EmployeeDetailsService.cs" />
+    <Compile Include="AppCodes\Services\TransactionMasterService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -155,7 +157,7 @@
     <Compile Include="Controllers\PagesController.cs" />
     <Compile Include="Controllers\ScaffoldingController.cs" />
     <Compile Include="Controllers\TablesController.cs" />
-    <Compile Include="Controllers\TransactioMasterController.cs" />
+    <Compile Include="Controllers\TransactionMasterController.cs" />
     <Compile Include="Controllers\UIElementsController.cs" />
     <Compile Include="Controllers\WidgetsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -165,9 +167,11 @@
     <Compile Include="Models\AccountData.cs" />
     <Compile Include="Models\Attendence.cs" />
     <Compile Include="Models\ClientJsonResult.cs" />
+    <Compile Include="Models\Common.cs" />
     <Compile Include="Models\EmployeeDetails.cs" />
     <Compile Include="Models\ScaffoldingContext.cs" />
     <Compile Include="Models\ScaffoldingController.cs" />
+    <Compile Include="Models\TransactionMaster.cs" />
     <Compile Include="Models\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -3527,7 +3531,7 @@
     <Content Include="webfonts\fa-solid-900.woff2" />
     <Content Include="webfonts\fa-v4compatibility.ttf" />
     <Content Include="webfonts\fa-v4compatibility.woff2" />
-    <Content Include="Views\TransactioMaster\Index.cshtml" />
+    <Content Include="Views\TransactionMaster\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

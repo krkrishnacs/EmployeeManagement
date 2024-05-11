@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout_2.cshtml";
+}
+<style>
+    .btn-primary {
+        background-color: #1ab394;
+        border-color: #1ab394;
+        color: #FFFFFF;
+        margin-left: 600px;
+    }
+
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .modal-footer {
+        margin-top: 13px;
+    }
+
+    .panel-body {
+        padding: -15px;
+    }
+
+    .hide-calendar .ui-datepicker-calendar {
+        display: none;
+    }
+</style>
+<script src="~/Scripts/app/TransactionYearMaster.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link href="~/Content/plugins/datapicker/datepicker3.css" rel="stylesheet" />
+<script src="~/Scripts/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css" rel="stylesheet">
+<!-- Button to trigger the modal -->
+<br />
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    <i style="width:10%" class="fa fa-plus"></i>Add New Transaction Year
+</button>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <!-- Here, 'modal-lg' class increases the size to large -->
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title" style="margin-left: 310px;">New Add Transcation Year Data</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" style="padding: 0px;">
+                <div class="panel-body ">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label class="required">Transaction Year :</label>
+                            <select class="form-control select2_demo_2" id="transactionYear" name="transactionYear">
+                                <option value="0">Select</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="required">From Year:</label>
+                            <select class="form-control select2_demo_2 " id="fromyear" name="fromyear">
+                                <option value="0">Select</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="required">From Month:</label>
+                            <select class="form-control select2_demo_2 " id="fromonth" name="fromonth">
+                                <option value="0">Select</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="required">To Year:</label>
+                            <select class="form-control select2_demo_2" id="ToYear" name="ToYear">
+                                <option value="0">Select</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="required">To Month:</label>
+                                <select class="form-control select2_demo_2" id="ToMonth" name="ToMonth">
+                                    <option value="0">Select</option>
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <label class="">Status:</label>
+                                <input type="checkbox" class="form-control input-sm isactive" id="Status" name="Status" title="Status " />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="btnSvae">Save changes</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <!--<div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>-->
+
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="panel panel-primary no-radius" style="margin-top: 63px;">
+    <div class="panel-heading no-radius">
+        Transaction Year Master  Details List:-
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <div class="table-resposive mt-15">
+                        <table class="table table-bordered table-condensed table-hover table-tbldata   tbldata" style="overflow-x: scroll; display:normal; width: 100%;" cellspacing="0" id="tbltarnsationDetails"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
