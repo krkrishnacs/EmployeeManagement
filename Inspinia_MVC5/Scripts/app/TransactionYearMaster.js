@@ -119,14 +119,14 @@
                 }
             });
         },
-        Get_AllEmployeeDetails: function (data, callback) {
+        ShowAllTransactionMaster: function (data, callback) {
             $.ajax({
                 type: 'post',
                 contentType: 'application/json;charset=utf-8;',
                 data: JSON.stringify(data),
                 dataType: 'json',
                 async: false,
-                url: '/EmployeeDetails/Get_AllEmployeeDetails',
+                url: '/TransactionMaster/ShowAllTransactionMaster',
                 success: function (responce) {
 
                     $(".loading-overlay").hide();
@@ -138,24 +138,7 @@
                 }
             });
         },
-        GetDataForEditByID: function (data, callback) {
-            $.ajax({
-                type: 'post',
-                contentType: 'application/json;charset=utf-8;',
-                data: JSON.stringify(data),
-                dataType: 'json',
-                async: false,
-                url: '/EmployeeDetails/GetDataForEditByID',
-                success: function (responce) {
-                    $(".loading-overlay").hide();
-                    callback(responce);
-                },
-                error: function () {
-                    $(".loading-overlay").hide();
-                    callback('error');
-                }
-            });
-        },
+       
     }
     var objClient = {
         Initialization: function () {
@@ -174,6 +157,7 @@
                 objClient.CommonMethods.GetToYear();
                 objClient.CommonMethods.GetFromMonth();
                 objClient.CommonMethods.GetToMonth();
+                objClient.CommonMethods.ShowAllTransactionMaster();
                 $(document).ready(function () {
                     $("#myModal").modal();
 
@@ -403,8 +387,8 @@
                         }
                         if (response.Data.code == 2) {
                             alertify.success(response.Data.Msg);
-                            //objClient.CommonMethods.Claer_Fields();
-                            //objClient.CommonMethods.Get_AllEmployeeDetails();
+                            objClient.CommonMethods.Claer_Fields();
+                            objClient.CommonMethods.ShowAllTransactionMaster();
 
                         }
 
@@ -414,28 +398,23 @@
                     }
                 });
             },
-            Get_AllEmployeeDetails: function () {
-                objServer.Get_AllEmployeeDetails(null, function (response) {
+            ShowAllTransactionMaster: function () {
+                objServer.ShowAllTransactionMaster(null, function (response) {
                     if (response.Status == 200) {
                         var data = response.Data;
-                        $('#tblEmployeeDetails').DataTable({
+                        $('#tbltarnsationDetails').DataTable({
                             dom: 'Bfrtip',
                             destroy: true,
                             data: data,
                             responsive: false,
                             columns: [
-                                { title: "<span>#</span>", data: 'Id' },
-                                { title: "<span>Employee Name</span>", data: 'EmployeeName' },
-                                { title: "<span>Date of Birth </span>", data: 'DateofBirth' },
-                                { title: "<span>Gender</span>", data: 'Gender' },
-                                { title: "<span>Mobile Number</span>", data: 'MobileNumber' },
-                                { title: "<span>Employee Address</span>", data: 'EmployeeAddress' },
-                                { title: "<span>Department Name</span>", data: 'DepartmentId' },
-                                { title: "<span>Department Name</span>", data: 'DepartmentName' },
-                                { title: "<span>Designation Name</span>", data: 'DesignationId' },
-                                { title: "<span>Designation Name</span>", data: 'DesignationName' },
-                                { title: "<span> IsActive </span>", data: 'IsActive' },
-                                { title: "<span>Action</span>", data: '' },
+                                { title: "<span>S.N</span>", data: 'Id' },
+                                { title: "<span>Transaction Year</span>", data: 'SessionDesc' },
+                                { title: "<span>From Year</span>", data: 'YearName' },
+                                { title: "<span>From Month</span>", data: 'MonthName' },
+                                { title: "<span>To Year</span>", data: 'ToYear' },
+                                { title: "<span>To Month</span>", data: 'ToMonth' },
+                                { title: "<span>Status</span>", data: 'Status' },
                             ],
                             columnDefs: [
                                 {
@@ -455,71 +434,38 @@
                                     "className": " text-center"
                                 },
                                 {
-                                    "targets": 3,
                                     "visible": true,
-                                    "className": "text-center",
-                                    "render": function (data) {
-                                        if (data === 'M') {
-                                            return 'Male';
-                                        } else if (data === 'F') {
-                                            return 'Female';
-                                        } else if (data === 'T') {
-                                            return 'Transgender';
-                                        }
-                                    }
-
+                                    "targets": 3,
+                                    "className": " text-center"
                                 },
+
                                 {
                                     "visible": true,
                                     "targets": 4,
                                     "className": " text-center"
                                 },
-
                                 {
                                     "visible": true,
                                     "targets": 5,
-                                    "className": " text-center"
+                                    "className": "text-center ",
+
                                 },
+                                //{
+                                //    "visible": true,
+                                //    "targets": 6,
+                                //    "className": "text-center",
+
+                                //},
+                                
                                 {
-                                    "visible": false,
+                                    "visible": true,
                                     "targets": 6,
-                                    "className": "text-center hide_column",
-
-                                },
-                                {
-                                    "visible": true,
-                                    "targets": 7,
-                                    "className": "text-center",
-
-                                },
-                                {
-                                    "visible": false,
-                                    "targets": 8,
-                                    "className": " text-center hide_column"
-                                },
-                                {
-                                    "visible": true,
-                                    "targets": 9,
-                                    "className": " text-center"
-                                },
-                                {
-                                    "visible": true,
-                                    "targets": 10,
                                     "className": "text-center",
                                     "render": function (data, a, row) {
-                                        return row.IsActive === true ? "Yes" : "No";
+                                        return row.Status === true ? "Active" : "DeActive";
                                     },
                                 },
 
-                                {
-                                    "targets": 11,
-                                    "className": "text-center",
-                                    'visible': true,
-                                    "render": function (data, a, row) {
-
-                                        return '<button class="btn btn-primary btn-xs btnEditOnline" style="width:50px">Edit</button>';
-                                    },
-                                },
                             ],
 
                             dom: 'Bfrtip',
@@ -549,34 +495,10 @@
                 });
 
             },
-            GetDataForEditByID: function (Id) {
-                var reqObj = {
-                    Id: Id
-                };
-                objServer.GetDataForEditByID(reqObj, function (response) {
-                    if (response.Status == 200) {
-                        var data = response.Data;
-                        $("#hdnID").val(data.Id);
-                        Control().empName.val(data.EmployeeName);
-                        Control().empdate.val(data.DateofBirth);
-                        Control().ddldepartment.val(data.DepartmentId);
-                        Control().ddldesignation.val(data.DesignationId);
-                        Control().ddlgender.val(data.Gender);
-                        Control().mobileno.val(data.MobileNumber);
-                        Control().empaddress.val(data.EmployeeAddress);
-                        Control().isactive.attr('checked', data.IsActive);
-                        $("#btnSave").text("Update");
-                        objClient.CommonMethods.Get_AllEmployeeDetails();
-                    }
-                    else {
-                        alertify.error(response.Message);
-                    }
-                });
-            },
             Validate_Flied: function () {
 
                 if (Control().transactionYear.val() == '') {
-                    alertify.error('Please Enter Employee Name'); return false;
+                    alertify.error('Please Select TransactionYear '); return false;
                 }
                 if (Control().fromyear.val() == '') {
                     alertify.error('Please Select From Year:'); return false;
@@ -594,15 +516,13 @@
             },
             Claer_Fields: function () {
                 $("#hdnId").val(''),
-                    Control().empName.val(''),
-                    Control().empaddress.val(''),
-                    Control().empdate.val(''),
-                    Control().ddldepartment.val(''),
-                    Control().ddldesignation.val(''),
-                    Control().ddlgender.val(''),
-                    Control().mobileno.val(''),
-                    Control().isactive.prop("checked", false);
-                $("#btnSave ").text('Save');
+                    Control().transactionYear.val(''),
+                    Control().fromyear.val(''),
+                    Control().fromonth.val(''),
+                    Control().ToYear.val(''),
+                    Control().ToMonth.val(''),
+                    Control().Status.prop("checked", false);
+                    $("#btnSave ").text('Save');
 
             },
         }

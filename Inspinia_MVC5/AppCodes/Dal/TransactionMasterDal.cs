@@ -51,7 +51,7 @@ namespace Inspinia_MVC5.AppCodes.Dal
         }
         public List<TransactionMaster> ShowAllTransactionMaster()
         {
-            var cmd = NewCommand("dbo.Get_AllEmployeeDetails");
+            var cmd = NewCommand("dbo.TransactionMaster");
             var dt = GetResult(cmd);
             return dt.Convert<TransactionMaster>();
         }

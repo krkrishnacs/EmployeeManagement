@@ -77,10 +77,10 @@ namespace Inspinia_MVC5.Controllers
             return Json(_cr);
         }
         [HttpPost]
-        public ActionResult ShowAllTransactionMaster()
+        public ActionResult ShowAllTransactionMaster(TransactionMaster transactionMaster)
         {
             var transactionMasterService = new TransactionMasterService(null);
-            var res = transactionMasterService.ShowAllTransactionMaster();
+            var res = transactionMasterService.ShowAllTransactionMaster(transactionMaster);
             _cr.Data = res;
             _cr.Status = HttpStatusCode.OK;
             _cr.Message = "Success";
