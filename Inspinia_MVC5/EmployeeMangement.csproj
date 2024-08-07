@@ -120,6 +120,7 @@
     <Folder Include="Views\ControllerBase\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCodes\Dal\CompanyMasterDal.cs" />
     <Compile Include="AppCodes\Dal\DalBase.cs" />
     <Compile Include="AppCodes\Dal\AccountDal.cs" />
     <Compile Include="AppCodes\Dal\AccountRepo.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AccountDataController.cs" />
     <Compile Include="Controllers\AppViewsController.cs" />
+    <Compile Include="Controllers\CompanyMasterController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\CSSAnimationsController.cs" />
     <Compile Include="Controllers\EcommerceController.cs" />
@@ -168,6 +170,7 @@
     <Compile Include="Models\Attendence.cs" />
     <Compile Include="Models\ClientJsonResult.cs" />
     <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\CompanyData.cs" />
     <Compile Include="Models\EmployeeDetails.cs" />
     <Compile Include="Models\ScaffoldingContext.cs" />
     <Compile Include="Models\ScaffoldingController.cs" />
@@ -2946,6 +2949,7 @@
     <Content Include="Images\p_big3.jpg" />
     <Content Include="Images\zender_logo.png" />
     <Content Include="Scripts\app\Account.js" />
+    <Content Include="Scripts\app\CompanyMaster.js" />
     <Content Include="Scripts\app\EmployeeDetails.js" />
     <Content Include="Scripts\app\inspinia.js" />
     <Content Include="Scripts\app\Login.js" />
@@ -3532,6 +3536,7 @@
     <Content Include="webfonts\fa-v4compatibility.ttf" />
     <Content Include="webfonts\fa-v4compatibility.woff2" />
     <Content Include="Views\TransactionMaster\Index.cshtml" />
+    <Content Include="Views\CompanyMaster\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

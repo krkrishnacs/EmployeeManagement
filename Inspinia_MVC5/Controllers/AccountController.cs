@@ -55,10 +55,8 @@ namespace Inspinia_MVC5.Controllers
         {
             Session["LoggedInUserName"] = null;
             Session.Clear();
-            //return RedirectToAction(nameof(Login));
             return RedirectToAction("Login", "Account");
         }
-        //[CustomAuthenticationFilter]
 
         [HttpPost]
         public ActionResult Login(UserLogin userLogin)
@@ -75,7 +73,6 @@ namespace Inspinia_MVC5.Controllers
             {
                 Session["Id"] = Guid.NewGuid();
                 Session["LoggedInUserName"] = userLogin.EmailAddress.ToString();
-               //return RedirectToAction(nameof(MainDashboard));
                 return RedirectToAction("MainDashboard", "Account");
             }
             else

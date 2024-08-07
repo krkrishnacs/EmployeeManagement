@@ -87,3 +87,171 @@
     </div>
 </section>
 
+@*----------------------------------------------------------------------------------------------------------------------------------------------*@
+<!--<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <div class="sign_in_box" style="display: block;">
+        <h3>Choose Account Type Sign In</h3>
+        <div class="sign_in_tab_action">
+            <a href="/PayTime/LoginPage#Admin_Sign_In" id="admin_sign_in_btn" class="">
+                <img src="/app_assets/images/admin.png">
+                <span>Admin</span>
+            </a>
+            <a href="/PayTime/LoginPage#Employee_Sign_In" id="employee_sign_in_btn" class="active">
+                <img src="/app_assets/images/employee.png">
+                <span>Employee</span>
+            </a>
+        </div>-->
+        <!-- Admin Sign In -->
+        <!--<div class="Admin_Sign_In" id="adminLogin" style="display: none;">
+
+            <form action="/PayTime/Login" class="form" method="post">
+                <div class="form_group">
+                    <label class="form-label" for="UserEmail">Email <span class="required" aria-required="true" style="color:red;"> * </span></label>
+                    <input class="form-control" type="text" name="UserEmail" id="UserEmail" required="">
+                    <span class="help-block" style="color: red; display: none;" id="spadminEmail"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="form_group">
+                    <label class="form-label" for="Password">Password <span class="required" aria-required="true" style="color:red;"> * </span></label>
+                    <input class="form-control" type="Password" name="Password" id="Password" required="">
+                    <span class="bar"></span>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="rememberme" name="rememberme">
+                            <label class="form-check-label" for="rememberme">Remember me</label>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <a class="forgot_password_btn" href="ForgotPassword/">Forgot Password?</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <button type="submit" class="login_btn">Login&ZeroWidthSpace;</button>
+                </div>
+                <hr>
+                <div class="row align-items-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <p class="need_an_sign_up"><span>Don't have an account? </span><a href="/PayTime/LoginPage#Sign_Up" class="btn_Sign_Up"> Sign Up</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>-->
+        <!-- Employee Sign In -->
+        <!--<div class="Employee_Sign_In" style="display: block;">
+            <form action="/PayTime/EmpLogin" class="form" method="post">
+                <div class="form_group">
+                    <label class="form-label" for="CompanyCode">Account code / Domain name <span class="required" aria-required="true" style="color:red;"> * </span></label>
+
+                    <a data-toggle="tooltip" data-placement="top" title="" data-original-title="Enter your admin account code or domain name"><i class="fa fa-info-circle"></i></a>
+                    <input class="form-control" type="text" name="CompanyCode" id="CompanyCode" required="">
+                    <span class="bar"></span>
+                </div>
+                <div class="form_group">
+                    <label class="form-label" for="empemail">Email / Punch ID / Employee Code <span class="required" aria-required="true" style="color:red;"> * </span></label>
+                    <input class="form-control" type="text" name="UserEmail" id="empemail" required="">
+                    <span class="help-block" style="color: red;" id="spEmpEmail"></span>
+                    <span class="bar"></span>
+                </div>
+                <div class="form_group">
+                    <label class="form-label" for="emppassword">Password <span class="required" aria-required="true" style="color:red;"> * </span></label>
+                    <input class="form-control" type="password" name="Password" id="emppassword" required="">
+                    <span class="bar"></span>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="emprememberme" name="emprememberme">
+                            <label class="form-check-label" for="emprememberme">Remember me</label>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <a class="forgot_password_btn" href="/paytime/ForgotPasswordForEmployee">Forgot Password?</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <button type="submit" class="login_btn">Login</button>
+                </div>
+                <hr>
+                <div class="row align-items-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <p class="need_an_sign_up"><span>Don't have an account? </span><a href="/PayTime/LoginPage#Sign_Up" class="btn_Sign_Up"> Sign Up</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>-->
+    <!-- Create Account Sign Up -->
+    <!--<div class="sign_up_box" style="display:none;">
+        <h3>Get started with your free trial.</h3>
+        <hr>
+        <form action="/" method="post">
+            <div class="text-center">
+                <span class="help-block" style="color: red;" id="sperror"></span>
+            </div>
+            <div class="form_group">
+                <label class="form-label">Company Name<span class="required" aria-required="true" style="color:red;">*</span></label>
+                <input class="form-control" type="text" name="txtCompanyName" id="txtCompanyName" required="" maxlength="50" onkeypress="return blockSpecialCharAllowSpace(event);" placeholder="ABC Limited">
+                <span class="bar" id="sp1"></span>
+            </div>
+            <div class="form_group">
+                <label class="form-label">Email<span class="required" aria-required="true" style="color:red;"> * </span></label>
+                <input class="form-control" type="text" name="txtEmail" id="txtEmail" placeholder="XYZ@ABC.com" required="">
+                <span class="help-block" style="color: red;" id="spvalidation"></span>
+                <span class="bar" id="sp2"></span>
+            </div>
+            <div class="form_group">
+                <label class="form-label">
+                    Domain Name<span class="required" aria-required="true" style="color:red;">*</span>
+                    <a data-toggle="tooltip" data-placement="top" title="" data-original-title="You can browse abc(yourdomainname) .minopcloud.com."><i class="fa fa-info-circle"></i></a>
+                </label>
+                <div class="input-group domain_name_box">
+
+                    <input class="form-control" type="text" name="txtDomainName" id="txtDomainName" required="" maxlength="50" onkeypress="return blockSpecialChar(event)" placeholder="ABC">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon2"> <i id="domain-spinner" class="fa"></i></span>
+                    </div>
+                    <span class="bar" id="sp3"></span>
+                </div>
+            </div>
+            <div class="form_group">
+                <label class="form-label">Password<span class="required" aria-required="true" style="color:red;"> * </span></label>
+                <input class="form-control" type="password" name="password" id="password" placeholder="********" required="">
+                <span class="bar" id="sp4"></span>
+                <div class="password-background"></div>
+
+                <span class="strength"></span>
+            </div>
+            <div class="form_group">
+                <label class="form-label" for="DealerCode">Partner Code &nbsp;</label>
+
+                <a data-toggle="tooltip" data-placement="top" title="" data-original-title="If you are associate with any partner enter partner code of your partner."><i class="fa fa-info-circle"></i></a>
+                <input class="form-control" type="text" name="DealerCode" id="DealerCode" maxlength="10" onkeypress="return blockSpecialChar(event)" onblur="CheckDealerCode()" required="">
+                <span class="help-block" style="color: red;" id="sppartnercode"></span>
+                <input type="hidden" id="ManagerId" value="0">
+                <input type="hidden" id="ActManagerId" value="0">
+                <span class="bar" id="sp5"></span>
+            </div>
+            <div>
+                <span class="help-block" style="color: red;" id="spvalidation"></span>
+            </div>
+            <div class="radio" style="display: none;">
+                <label> <input type="radio" id="IsOffice" name="module">Office</label>&nbsp;&nbsp;
+                <label> <input type="radio" id="IsSchool" name="module">School </label>
+            </div>
+            <hr>
+            <div class="text-center">
+                <button type="button" class="register_btn" id="btnregistersubmit">Register</button>
+            </div>
+            <hr>
+            <div class="row align-items-center">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <p class="admin_sign_in"><span>Do you have an account?</span> <a href="/PayTime/LoginPage#Admin_Sign_In" class="btn_Sign_In">Sign In</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>-->
