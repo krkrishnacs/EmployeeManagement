@@ -21,7 +21,7 @@ namespace Inspinia_MVC5.AppCodes.Dal
         public bool UserRegister(AccountData userRegistration)
         {
             connection();
-            SqlCommand com = new SqlCommand("dbo.RegisterAccountData", con);
+            SqlCommand com = new SqlCommand("InsertUserAccount", con);
             com.CommandType = CommandType.StoredProcedure;
             com.Parameters.AddWithValue("@FirstName", userRegistration.FirstName);
             com.Parameters.AddWithValue("@LastName", userRegistration.LastName);
